@@ -23,7 +23,6 @@ import {
   Account,
   Inbox,
   Taskboard,
-  LogOut,
 } from '../../constant'
 
 import en from '../../assets/i18n/en.json';
@@ -39,7 +38,6 @@ setDefaultLanguage('en');
 setLanguageCookie();
 
 const Rightbar = (props) => {    
-  const [searchresponsive, setSearchresponsive] = useState(false)
   const [langdropdown, setLangdropdown] = useState(false)
   const [moonlight, setMoonlight] = useState(false)
   const [selected, setSelected] = useState("en")
@@ -59,7 +57,6 @@ const Rightbar = (props) => {
     }
   }, []);
 
-  //full screen function
   function goFull() {
     if ((document.fullScreenElement && document.fullScreenElement !== null) ||
       (!document.mozFullScreen && !document.webkitIsFullScreen)) {
@@ -78,17 +75,6 @@ const Rightbar = (props) => {
       } else if (document.webkitCancelFullScreen) {
         document.webkitCancelFullScreen();
       }
-    }
-  }
-
-  const SeacrhResposive = (searchresponsive) => {
-    if (searchresponsive) {
-      setSearchresponsive(!searchresponsive)
-      document.querySelector(".search-full").classList.add("open");
-      document.querySelector(".more_lang").classList.remove("active");
-    } else {
-      setSearchresponsive(!searchresponsive)
-      document.querySelector(".search-full").classList.remove("open");
     }
   }
 
@@ -145,7 +131,7 @@ const Rightbar = (props) => {
               <li><User /><span>{Account} </span></li>
               <li><Mail /><span>{Inbox}</span></li>
               <li><FileText /><span>{Taskboard}</span></li>
-              <li><LogIn /><span>{LogOut}</span></li>
+              <li><LogIn /><span onClick={() => window.href= ``}> Sair </span></li>
             </ul>
           </li>
         </ul>

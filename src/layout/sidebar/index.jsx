@@ -198,7 +198,7 @@ const Sidebar = (props) => {
       <div className="sidebar-wrapper">
         <div className="logo-wrapper">
           <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
-            <img className="img-fluid for-light" src={require("../../assets/images/logo/logo.png")} alt="" />
+            <img className="img-fluid for-light" src={require("../../assets/images-transalvador/logo_transalvador.png")} alt="" />
             <img className="img-fluid for-dark" src={require("../../assets/images/logo/logo_dark.png")} alt="" />
           </Link>
           <div className="back-btn" onClick={() => responsiveSidebar()}><i className="fa fa-angle-left"></i></div>

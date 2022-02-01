@@ -12,20 +12,15 @@
  */
 
 // *** utils ***
-
-
 @import "utils/variables";
-
 :root {
-    --theme-deafult: #7366ff;
+    --theme-deafult: #E37802;
     --theme-secondary: #f73164;
 }
 
 // *** base ***
 @import "base/reset";
 @import "base/typography";
-
-
 //  *** components ***
 @import "components/according";
 @import "components/alert";
@@ -34,9 +29,7 @@
 @import "components/bookmark";
 @import "components/breadcrumb";
 @import "components/builders";
-
 @import "components/buttons";
-
 @import "components/card";
 @import "components/color";
 @import "components/datepicker";
@@ -63,12 +56,7 @@
 @import "components/react-plugin";
 @import "components/slick.scss";
 @import "components/slick-theme.scss";
-
-
-
-
 //	*** pages ***
-
 @import "pages/blog";
 @import "pages/bookmark-app";
 @import "pages/cart";
@@ -104,10 +92,7 @@
 @import "pages/timeliny";
 @import "pages/user-profile";
 @import "pages/wishlist";
-
-
 // *** layout *** 
-
 @import "layout/footer";
 @import "layout/grid";
 @import "layout/header";
@@ -119,6 +104,7 @@
 /* ---------------------
 	*** themes ***
 -----------------------*/
+
 @import "themes/dark";
 @import "themes/dark-sidebar";
 @import "themes/theme-customizer";

@@ -2,7 +2,6 @@ import React, { Fragment,useState,useEffect } from 'react';
 
 
 const Loader = (props) => {
-
     const [show, setShow] = useState(true);
     
     useEffect(() => {

@@ -1,33 +1,10 @@
 import React, { Fragment, useState, useLayoutEffect, useEffect } from 'react';
-import { Container, Row, Col } from 'reactstrap'
-import { X, Layers, GitPullRequest, User, Users, UserMinus, UserCheck, Airplay, Zap,Heart,Inbox, Sliders } from 'react-feather'
+import { Col } from 'reactstrap'
+import { Sliders } from 'react-feather'
 import { Link } from 'react-router-dom'
-import { errorPages, authPages, usefullPages, comingsoonPages } from './pages'
-import {
-  BonusUi,
-  MegaMenu,
-  ErrorPage,
-  Authentication,
-  UsefullPages,
-  ComingSoon, 
-  FileManager,
-  SocialApp,
-  UserEdit,
-  UsersCards,
-  UserProfile,
-  KanbanBoard,
-  Bookmark,
-  LevelMenu
-} from '../../constant'
-const Leftbar = (props) => {
 
-  const [bonusui, setBonusUI] = useState(false)
-  const [levelMenu, setLevelMenu] = useState(false)
+const Leftbar = (props) => {
   const [sidebartoggle, setSidebartoggle] = useState(true)
-  const [megaboxtoggle1, setMegaboxtoggle1] = useState(true)
-  const [megaboxtoggle2, setMegaboxtoggle2] = useState(true)
-  const [megaboxtoggle3, setMegaboxtoggle3] = useState(true)
-  const [megaboxtoggle4, setMegaboxtoggle4] = useState(true)
   const width = useWindowSize()
 
   function useWindowSize() {
@@ -43,9 +20,7 @@ const Leftbar = (props) => {
     return size;
   }
 
-
   useEffect(() => {
-
     var ignoreClick_On_Out_side_Element = document.getElementById('out_side_click');
     var ignoreClick_On_Main_Nav_Element = document.getElementById('sidebar-menu');
     document.addEventListener('click', function(event) {
@@ -57,46 +32,11 @@ const Leftbar = (props) => {
             document.querySelector(".sidebar-wrapper").className = "sidebar-wrapper close_icon "
         }
     });
-
-    if (width <= 767) {
-      setMegaboxtoggle1(true)
-      setMegaboxtoggle2(true)
-      setMegaboxtoggle3(true)
-      setMegaboxtoggle4(true)
-    } else {
-      setMegaboxtoggle1(false)
-      setMegaboxtoggle2(false)
-      setMegaboxtoggle3(false)
-      setMegaboxtoggle4(false)
-    }
-
   }, [width])
 
-  const responsiveMegaMenuclose = () => {
-    setBonusUI(false)
-    document.querySelector(".mega-menu-container").classList.remove("d-block")
-  }
-
-  const ToggleBonusUI = (value) => {
-    setLevelMenu(false)
-    if (value) {
-      setBonusUI(!value)
-      document.querySelector(".mega-menu-container").classList.remove("d-block")
-    } else {
-      setBonusUI(!value)
-      if (width <= 991) {
-        document.querySelector(".page-header").className = "page-header close_icon";
-        document.querySelector(".sidebar-wrapper").className = "sidebar-wrapper close_icon "
-        document.querySelector(".mega-menu-container").classList.add("d-block")
-      } else {
-        document.querySelector(".mega-menu-container").classList.add("d-block")
-      }
-    }
-  }
 
   const responsive_openCloseSidebar = (toggle) => {
     if(width <= 991){
-      setBonusUI(false)
       document.querySelector(".page-header").className = "page-header";
       document.querySelector(".sidebar-wrapper").className = "sidebar-wrapper "
     }else{
@@ -112,12 +52,6 @@ const Leftbar = (props) => {
       }
     }
   };
-
-  const OnLevelMenu = (menu) => {
-    setBonusUI(false)
-    document.querySelector(".mega-menu-container").classList.remove("d-block")
-    setLevelMenu(!menu)
-  }
 
   return (
     <Fragment>

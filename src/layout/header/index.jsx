@@ -11,8 +11,6 @@ import { useSelector } from 'react-redux'
 const Header = (props) => {
   const [mainmenu, setMainMenu] = useState(MENUITEMS);
   const [searchValue, setsearchValue] = useState('');
-  const [searchResult, setSearchResult] = useState(false);
-  const [searchResultEmpty, setSearchResultEmpty] = useState(false);
   const layout_type = useSelector(content => content.Customizer.layout)
   const layout_version = useSelector(content => content.Customizer.mix_background_layout)
   
@@ -64,22 +62,18 @@ const Header = (props) => {
 
   const checkSearchResultEmpty = (items) => {
       if (!items.length) {
-          setSearchResultEmpty(true);
           document.querySelector(".empty-menu").classList.add('is-open');
       } else {
-          setSearchResultEmpty(false);
           document.querySelector(".empty-menu").classList.remove('is-open');
       }
   }
 
   const addFix = () => {
-      setSearchResult(true);
       document.querySelector(".Typeahead-menu").classList.add('is-open');
       document.body.className = `${layout_version} ${layout_type} offcanvas`
   }
 
   const removeFix = () => { 
-      setSearchResult(false)
       setsearchValue('')
       document.querySelector(".Typeahead-menu").classList.remove('is-open');
       document.body.className = `${layout_version} ${layout_type}`

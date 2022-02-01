@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import Breadcrumb from '../../../layout/breadcrumb'
 import {Container,Row,Col,Card,CardHeader,CardBody} from 'reactstrap';
 
-
 const  Sample = (props) => {
     return (
          <Fragment>

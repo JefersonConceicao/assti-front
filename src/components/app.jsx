@@ -3,7 +3,6 @@ import Loader from "../layout/loader";
 import Header from '../layout/header'
 import Sidebar from '../layout/sidebar'
 import Footer from '../layout/footer'
-import ThemeCustomize from "../layout/theme-customizer";
 import {ToastContainer} from 'react-toastify'
 
 const App = ({children}) => {
@@ -19,7 +18,7 @@ const App = ({children}) => {
           {children}
         </div>
         <Footer/>
-        <ThemeCustomize/>
+        {/* <ThemeCustomize/> */}
         </div>
       </div>
       <ToastContainer/>

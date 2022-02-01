@@ -5,7 +5,37 @@ import { useDispatch, useSelector } from 'react-redux'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { toast } from 'react-toastify';
 import { useHistory} from "react-router-dom";
-import { Configuration, ModalTitle, CopyText, Cancel, LayoutType, LTR, RTL, Box, SidebarType, SidebarSettings, Default, Border, IconColor, RouterAnimation, ZoomFade, SildeFade, Fade, ZoomOut, None, MixLayout, FadeBottom, UnlimitedColor, QuickOption, BuyNow, Support, CheckFeatures, Document, Apply } from '../../constant'
+import { 
+    Configuration, 
+    ModalTitle,
+    CopyText,
+    Cancel, 
+    LayoutType, 
+    LTR, 
+    RTL, 
+    Box, 
+    SidebarType, 
+    SidebarSettings, 
+    Default, 
+    Border, 
+    IconColor, 
+    RouterAnimation, 
+    ZoomFade, 
+    SildeFade, 
+    Fade, 
+    ZoomOut, 
+    None,
+    MixLayout, 
+    FadeBottom, 
+    UnlimitedColor, 
+    QuickOption, 
+    BuyNow, 
+    Support, 
+    CheckFeatures, 
+    Document, 
+    Apply 
+} from '../../constant'
+
 import {
     ADD_LAYOUT,
     ADD_SIDEBAR_TYPES,
@@ -30,6 +60,7 @@ import twelve from '../../assets/images/layouts/12.jpg';
 import { classes } from '../../data/layouts';
 
 let DefaultLayout = {};
+
 const Themecustomizer = (props) => {
     const [rightSidebar, setRightSidebar] = useState(true);
     const [showHorizontal, setShowHorizontal] = useState(true);
