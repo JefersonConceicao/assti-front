@@ -7,6 +7,7 @@ import {ToastContainer} from 'react-toastify'
 
 const App = ({children}) => {
   console.warn = () => {}
+
   return (
     <Fragment>
       <Loader/>

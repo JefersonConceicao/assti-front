@@ -9,6 +9,7 @@ import {BrowserRouter,Switch,Route,Redirect} from 'react-router-dom'
 import { CSSTransition,TransitionGroup } from 'react-transition-group'
 import {routes} from './route';
 import ConfigDB from './data/customizer/config'
+import Login from './pages/auth/login';
 
 const Root = (props) =>  {
   const [anim, setAnim] = useState("");
@@ -23,7 +24,7 @@ const Root = (props) =>  {
 
       return function cleanup() {
           abortController.abort();
-        }
+      }
     }, []);
 
     return(
@@ -31,28 +32,30 @@ const Root = (props) =>  {
         <Provider store={store}>
           <BrowserRouter basename={`/`}>
           <Switch>
+            <Route exact path={`${process.env.PUBLIC_URL}/`} render={() => {
+              return (<Redirect to={`${process.env.PUBLIC_URL}/login`} />)
+            }}/>
+
+            <Route exact path={`${process.env.PUBLIC_URL}/login`} component={Login}/>
             <App>
-              <Route exact path={`${process.env.PUBLIC_URL}/`} render={() => {
-                  return (<Redirect to={`${process.env.PUBLIC_URL}/dashboard/default`} />)
-              }} />
-            <TransitionGroup>
-              {routes.map(({ path, Component }) => (
-                  <Route key={path} exact path={`${process.env.PUBLIC_URL}${path}`}>
-                      {({ match }) => (
-                          <CSSTransition 
-                          in={match != null}
-                          timeout={100}
-                          classNames={anim} 
-                          unmountOnExit
-                          >
-                          <div>
-                            <Component/>
-                          </div>
-                          </CSSTransition> 
-                      )}
-                  </Route>
-                  ))}
-            </TransitionGroup>
+              <TransitionGroup>
+                {routes.map(({ path, Component }) => (
+                    <Route key={path} exact path={`${process.env.PUBLIC_URL}${path}`}>
+                        {({ match }) => (
+                            <CSSTransition 
+                            in={match != null}
+                            timeout={100}
+                            classNames={anim} 
+                            unmountOnExit
+                            >
+                            <div>
+                              <Component/>
+                            </div>
+                            </CSSTransition> 
+                        )}
+                    </Route>
+                    ))}
+              </TransitionGroup>
             </App>
           </Switch>
           </BrowserRouter>
