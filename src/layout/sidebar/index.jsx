@@ -7,7 +7,6 @@ import { translate } from 'react-switch-lang';
 import configDB from '../../data/customizer/config';
 import { DefaultLayout } from '../theme-customizer';
 
-
 const Sidebar = (props) => {
   const id = window.location.pathname.split('/').pop()
   const defaultLayout= Object.keys(DefaultLayout);

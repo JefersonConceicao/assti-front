@@ -7,8 +7,8 @@ import {
         ADD_MIX_BACKGROUND_LAYOUT,
         ROUTER_ANIMATION 
     } from "../actionTypes";
+    
 import ConfigDB from '../../data/customizer/config';
-
 const initial_state = {
     customizer: ConfigDB.data,
     configData: {},
@@ -22,7 +22,6 @@ const initial_state = {
 
 export default (state = initial_state, action) => {
     switch (action.type) {
-
         case ADD_COSTOMIZER:
             return { ...state, loading: false, customizer: ConfigDB.data };
 

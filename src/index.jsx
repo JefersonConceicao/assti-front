@@ -1,19 +1,19 @@
 import React, { Fragment,useState,useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter,Switch,Route,Redirect} from 'react-router-dom'
+import { CSSTransition,TransitionGroup } from 'react-transition-group'
+import { Provider } from 'react-redux';
+
 import './index.scss';
 import App from './components/app';
 import * as serviceWorker from './serviceWorker';
-import { Provider } from 'react-redux';
-import store from './store'
-import {BrowserRouter,Switch,Route,Redirect} from 'react-router-dom'
-import { CSSTransition,TransitionGroup } from 'react-transition-group'
+import store from './redux/store';
 import {routes} from './route';
-import ConfigDB from './data/customizer/config'
 import Login from './pages/auth/login';
 
 const Root = (props) =>  {
   const [anim, setAnim] = useState("");
-  const animation = localStorage.getItem("animation") || ConfigDB.data.router_animation || 'fade'
+  const animation = localStorage.getItem("animation") || 'fade'
   const abortController = new AbortController();
 
   useEffect(() => {
