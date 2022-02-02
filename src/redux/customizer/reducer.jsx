@@ -1,12 +1,12 @@
 import { 
-        ADD_COSTOMIZER, 
-        ADD_LAYOUT, 
-        ADD_SIDEBAR_TYPES, 
-        ADD_SIDEBAR_SETTINGS, 
-        ADD_COLOR, 
-        ADD_MIX_BACKGROUND_LAYOUT,
-        ROUTER_ANIMATION 
-    } from "../actionTypes";
+    ADD_COSTOMIZER, 
+    ADD_LAYOUT, 
+    ADD_SIDEBAR_TYPES, 
+    ADD_SIDEBAR_SETTINGS, 
+    ADD_COLOR, 
+    ADD_MIX_BACKGROUND_LAYOUT,
+    ROUTER_ANIMATION 
+} from "../actionTypes";
     
 import ConfigDB from '../../data/customizer/config';
 const initial_state = {
@@ -40,7 +40,6 @@ export default (state = initial_state, action) => {
             state.customizer.settings.sidebar_setting = action.payload
             const settingsUpdate = state.customizer.settings.sidebar_setting;
             return { ...state, loading: true, settings: settingsUpdate };
-
 
         case ADD_COLOR:
             const colors = action.payload;

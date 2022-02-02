@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { connect } from 'react-redux';
+
 import {
   Container,
   Row,
@@ -10,11 +12,27 @@ import {
   Button,
 } from "reactstrap";
 
-const Login = () => {
+//ACTIONS
+import {
+  ReqLogin,
+} from '../../redux/actions';
+
+const Login = ({
+  //ACTIONS
+  ReqLogin
+
+
+}) => {
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+
+  const submitFormLogin = () => {
+    if(!!form.email && !!form.password){
+      ReqLogin(form);
+    } 
+  }
 
   return (
     <Container fluid={true} className="p-0">
@@ -32,7 +50,7 @@ const Login = () => {
                 </div>
                 <div className="login-main login-tab">
                   <div className="content-login">
-                    <Form className="theme-form">
+                    <Form className="theme-form" onSubmit={submitFormLogin}>
                       <h4> Entrar </h4>
                       <p> Utilize suas credenciais para efetuar o login. </p>
                       <FormGroup>
@@ -75,4 +93,11 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = ({Auth}) => {
+    const {loading} = Auth;
+    return {loading}
+}
+
+export default connect(mapStateToProps, {
+  ReqLogin,
+})(Login);
