@@ -9,10 +9,7 @@ const initialState = {
 export default function(state = initialState, action){
     switch(action.type){
         case REQUEST_LOGIN:
-            return {
-                ...state, loading: true,
-            }   
-        
+            return {...state, loading: true}
         default: 
             return {...state}
     }

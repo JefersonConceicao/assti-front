@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
-
 import {
   Container,
   Row,
@@ -13,27 +12,26 @@ import {
 } from "reactstrap";
 
 //ACTIONS
-import {
-  ReqLogin,
-} from '../../redux/actions';
+import { ReqLogin } from '../../redux/actions';
 
 const Login = ({
-  //ACTIONS
-  ReqLogin
-
-
+  ReqLogin,
+  loading
 }) => {
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
 
-  const submitFormLogin = () => {
+  const submitFormLogin = (e) => {
+    e.preventDefault();
+
     if(!!form.email && !!form.password){
       ReqLogin(form);
     } 
   }
 
+  console.log(loading);
   return (
     <Container fluid={true} className="p-0">
       <Row className="m-0">
@@ -75,8 +73,8 @@ const Login = ({
                       <Row className="mt-4">
                         <Col md="12">
                           <div className="form-group mt-3">
-                            <Button color="primary" className="btn-block">
-                              Entrar
+                            <Button color="primary" className="btn-block" disabled={loading}>
+                              {loading ? "Aguarde..." : "Login"}
                             </Button>
                           </div>
                         </Col>
@@ -93,11 +91,11 @@ const Login = ({
   );
 };
 
-const mapStateToProps = ({Auth}) => {
-    const {loading} = Auth;
-    return {loading}
+const estadoProps = ({Auth}) => {
+  const { loading } = Auth;
+  return { loading }
 }
 
-export default connect(mapStateToProps, {
+export default connect(estadoProps, {
   ReqLogin,
 })(Login);
