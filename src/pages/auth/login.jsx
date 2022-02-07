@@ -1,35 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { connect } from 'react-redux';
-
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  FormGroup,
-  Input,
-  Label,
-  Button,
-} from "reactstrap";
-
+import SimpleReactValidator from 'simple-react-validator';
+import { Container, Row, Col, Form, FormGroup,Input, Label, Button,} from "reactstrap";
+//Validator
+import { validatorMessages } from "../../components/validatorMessages";
 //ACTIONS
-import {
-  ReqLogin,
-} from '../../redux/actions';
+import { ReqLogin } from '../../redux/actions';
 
 const Login = ({
-  //ACTIONS
-  ReqLogin
+  ReqLogin,
+  loading
 }) => {
+  const [, forceUpdate] = useState();
+  const simpleValidator = useRef(new SimpleReactValidator({
+    forceUpdate: forceUpdate,
+    ...validatorMessages
+  })).current;
+
   const [form, setForm] = useState({
-    email: "",
-    password: "",
+    usu_nom_login: "",
+    usu_num_senha: "",
   });
 
-  const submitFormLogin = () => {
-    if(!!form.email && !!form.password){
+  const submitFormLogin = (e) => {
+    e.preventDefault();
+    if(simpleValidator.allValid()){
       ReqLogin(form);
-    } 
+    }
   }
 
   return (
@@ -53,15 +50,35 @@ const Login = ({
                       <p> Utilize suas credenciais para efetuar o login. </p>
                       <FormGroup>
                         <Label className="col-form-label"> E-mail </Label>
-                        <Input className="form-control" type="email" onChange={e => {
-                            setForm({...form, email: e.target.value});
-                        }}/>
+                        <Input
+                          className="form-control"
+                          name="usu_nom_login" 
+                          type="email" 
+                          value={form.usu_nom_login}
+                          onChange={e => {
+                            setForm({ ...form, usu_nom_login: e.target.value });
+                            simpleValidator.showMessageFor("usu_nom_login")
+                          }}
+                        />
+                        <Label className="text-danger"> 
+                          {simpleValidator.message('usu_nom_login', form.usu_nom_login, 'required|email')} 
+                        </Label>
                       </FormGroup>
                       <FormGroup>
                         <Label className="col-form-label"> Senha </Label>
-                        <Input className="form-control" type="password" onChange={e => {
-                            setForm({...form, password: e.target.value});
-                        }}/>
+                        <Input 
+                          name="usu_num_senha"
+                          value={form.usu_num_senha}
+                          className="form-control" 
+                          type="password" 
+                          onChange={e => {
+                            setForm({ ...form, usu_num_senha: e.target.value });
+                            simpleValidator.showMessageFor("usu_num_senha");
+                          }}
+                        />
+                        <Label className="text-danger">
+                          {simpleValidator.message('usu_num_senha', form.usu_num_senha, 'required')} 
+                        </Label>
                       </FormGroup>
                       <Row className="mb-2">
                         <Col md="12">
@@ -73,8 +90,8 @@ const Login = ({
                       <Row className="mt-4">
                         <Col md="12">
                           <div className="form-group mt-3">
-                            <Button color="primary" className="btn-block">
-                              Entrar
+                            <Button color="primary" className="btn-block" disabled={loading}>
+                              {loading ? "Aguarde..." : "Login"}
                             </Button>
                           </div>
                         </Col>
@@ -91,11 +108,11 @@ const Login = ({
   );
 };
 
-const mapStateToProps = ({Auth}) => {
-    const {loading} = Auth;
-    return {loading}
+const estadoProps = ({ Auth }) => {
+  const { loading } = Auth;
+  return { loading }
 }
 
-export default connect(mapStateToProps, {
+export default connect(estadoProps, {
   ReqLogin,
 })(Login);

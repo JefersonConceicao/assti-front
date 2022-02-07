@@ -10,6 +10,7 @@ import * as serviceWorker from './serviceWorker';
 import store from './redux/store';
 import {routes} from './route';
 import Login from './pages/auth/login';
+import { Toaster } from 'react-hot-toast';
 
 const Root = (props) =>  {
   const [anim, setAnim] = useState("");
@@ -29,6 +30,7 @@ const Root = (props) =>  {
 
     return(
       <Fragment>
+        <Toaster/>
         <Provider store={store}>
           <BrowserRouter basename={`/`}>
           <Switch>

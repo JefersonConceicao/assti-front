@@ -9,4 +9,4 @@ export const ROUTER_ANIMATION = "ROUTER_ANIMATION";
 
 /* AUTH */
 export const REQUEST_LOGIN = "REQUEST_LOGIN";
-
+export const LOGIN = "LOGIN";
