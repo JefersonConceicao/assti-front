@@ -98,6 +98,11 @@ const Rightbar = (props) => {
     }
   }
 
+  const handleClickLogout = () => {
+    localStorage.removeItem('userToken');
+    window.location.href = '/login';
+  }   
+
   return (
     <Fragment>
       <div className="nav-right col-8 pull-right right-header p-0">
@@ -130,8 +135,8 @@ const Rightbar = (props) => {
             <ul className="profile-dropdown onhover-show-div">
               <li><User /><span>{Account} </span></li>
               <li><Mail /><span>{Inbox}</span></li>
-              <li><FileText /><span>{Taskboard}</span></li>
-              <li><LogIn /><span onClick={() => window.href= ``}> Sair </span></li>
+              <li><FileText /><span>{Taskboard}</span> </li>
+              <li><LogIn /> <span onClick={handleClickLogout}> Sair </span> </li>
             </ul>
           </li>
         </ul>

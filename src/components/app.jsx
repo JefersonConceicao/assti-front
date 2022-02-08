@@ -3,6 +3,7 @@ import Loader from "../layout/loader";
 import Header from '../layout/header'
 import Sidebar from '../layout/sidebar'
 import Footer from '../layout/footer'
+import TapTop from '../layout/tap-top';
 import {ToastContainer} from 'react-toastify'
 
 const App = ({children}) => {
@@ -11,9 +12,10 @@ const App = ({children}) => {
   return (
     <Fragment>
       <Loader/>
+      <TapTop/>
       <div className="page-wrapper compact-wrapper" id="pageWrapper">
       <Header/>
-      <div className="page-body-wrapper sidebar-icon">
+      <div className="page-body-wrapper">
         <Sidebar/>
         <div className="page-body">
           {children}

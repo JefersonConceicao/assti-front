@@ -19,7 +19,6 @@ const Root = (props) =>  {
 
   useEffect(() => {
       setAnim(animation)
-      
       console.ignoredYellowBox = ["Warning: Each", "Warning: Failed"];
       console.disableYellowBox = true;
 
@@ -28,6 +27,8 @@ const Root = (props) =>  {
       }
     }, []);
 
+    const jwtToken = localStorage.getItem("userToken");
+    
     return(
       <Fragment>
         <Toaster/>
@@ -38,7 +39,9 @@ const Root = (props) =>  {
               return (<Redirect to={`${process.env.PUBLIC_URL}/login`} />)
             }}/>
 
-            <Route exact path={`${process.env.PUBLIC_URL}/login`} component={Login}/>
+            <Route exact path={`${process.env.PUBLIC_URL}/login`} render={() => {
+                return  !jwtToken ? (<Login />) : (<Redirect to={`${process.env.PUBLIC_URL}/usuarios`} />)
+            }}/>
             <App>
               <TransitionGroup>
                 {routes.map(({ path, Component }) => (

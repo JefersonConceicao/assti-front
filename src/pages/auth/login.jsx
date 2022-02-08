@@ -2,9 +2,7 @@ import React, { useState, useRef } from "react";
 import { connect } from 'react-redux';
 import SimpleReactValidator from 'simple-react-validator';
 import { Container, Row, Col, Form, FormGroup,Input, Label, Button,} from "reactstrap";
-//Validator
 import { validatorMessages } from "../../components/validatorMessages";
-//ACTIONS
 import { ReqLogin } from '../../redux/actions';
 
 const Login = ({
@@ -22,10 +20,14 @@ const Login = ({
     usu_num_senha: "",
   });
 
+  const redirectToHome = () => {
+    window.location.href = '/dashboard/default'
+  }
+
   const submitFormLogin = (e) => {
     e.preventDefault();
     if(simpleValidator.allValid()){
-      ReqLogin(form);
+      ReqLogin(form, redirectToHome);
     }
   }
 
@@ -49,11 +51,11 @@ const Login = ({
                       <h4> Entrar </h4>
                       <p> Utilize suas credenciais para efetuar o login. </p>
                       <FormGroup>
-                        <Label className="col-form-label"> E-mail </Label>
+                        <Label className="col-form-label"> Login </Label>
                         <Input
                           className="form-control"
                           name="usu_nom_login" 
-                          type="email" 
+                          type="text" 
                           value={form.usu_nom_login}
                           onChange={e => {
                             setForm({ ...form, usu_nom_login: e.target.value });
@@ -61,7 +63,7 @@ const Login = ({
                           }}
                         />
                         <Label className="text-danger"> 
-                          {simpleValidator.message('usu_nom_login', form.usu_nom_login, 'required|email')} 
+                          {simpleValidator.message('usu_nom_login', form.usu_nom_login, 'required')} 
                         </Label>
                       </FormGroup>
                       <FormGroup>

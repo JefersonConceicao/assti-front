@@ -10,3 +10,7 @@ export const ROUTER_ANIMATION = "ROUTER_ANIMATION";
 /* AUTH */
 export const REQUEST_LOGIN = "REQUEST_LOGIN";
 export const LOGIN = "LOGIN";
+
+/* USUÁRIOS */
+export const REQUEST_GET_USUARIOS = "REQUEST_GET_USUARIOS";
+export const GET_USUARIOS = "GET_USUARIOS";

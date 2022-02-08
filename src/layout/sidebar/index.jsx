@@ -9,9 +9,8 @@ import { DefaultLayout } from '../theme-customizer';
 
 const Sidebar = (props) => {
   const id = window.location.pathname.split('/').pop()
-  const defaultLayout= Object.keys(DefaultLayout);
-  const layout= id ? id : defaultLayout
-  // eslint-disable-next-line
+  const defaultLayout = Object.keys(DefaultLayout);
+  const layout = id ? id : defaultLayout
   const [mainmenu, setMainMenu] = useState(MENUITEMS);
   const [margin, setMargin] = useState(0);
   const [width, setWidth] = useState(0);
@@ -29,7 +28,9 @@ const Sidebar = (props) => {
     document.querySelector(".left-arrow").classList.add("d-none")
     window.addEventListener('resize', handleResize)
     handleResize();
+
     const currentUrl = window.location.pathname;
+
     MENUITEMS.map(items => {
       items.Items.filter((Items) => {
         if (Items.path === currentUrl)
@@ -54,15 +55,14 @@ const Sidebar = (props) => {
       })
       return items
     })
+
     window.addEventListener('scroll',handleScroll)
     handleScroll();
-
+    
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleResize)
     }
-
-    // eslint-disable-next-line
   }, [layout]);
 
   const handleResize = () => {
@@ -72,13 +72,13 @@ const Sidebar = (props) => {
   const setNavActive = (item) => {
     MENUITEMS.map(menuItems => {
       menuItems.Items.filter(Items => {
-        if (Items !== item)
-        {
+        if (Items !== item){
           Items.active = false
           document.querySelector(".bg-overlay1").classList.remove("active")
         } 
-        if (Items.children && Items.children.includes(item))
-          {Items.active = true
+        if (Items.children && Items.children.includes(item)){
+          console.log("active");
+            Items.active = true
             document.querySelector(".sidebar-link").classList.add("active")
           }
         if (Items.children) {
@@ -216,10 +216,14 @@ const Sidebar = (props) => {
                 {
                   MENUITEMS.map((Item, i) =>
                     <Fragment key={i}>
-                      {Item.Items.map((menuItem, i) =>
+                      {Item.Items.map((menuItem, i) => 
+                 
                         <li className="sidebar-list" key={i}>
                           {(menuItem.type === 'sub') ?
-                            <a href="javascript" className={`sidebar-link sidebar-title ${menuItem.active ? activeClass() : ''}`} onClick={(event) => {event.preventDefault(); setNavActive(menuItem)}}>
+                            <a href="javascript" 
+                              className={`sidebar-link sidebar-title ${menuItem.active ? activeClass() : ''}`} 
+                              onClick={(event) => {event.preventDefault(); setNavActive(menuItem)}}
+                            >
                               <menuItem.icon />
                               <span>{props.t(menuItem.title)}</span>
                               {menuItem.badge ? <label className={menuItem.badge}>{menuItem.badgetxt}</label> : ""}
@@ -241,15 +245,11 @@ const Sidebar = (props) => {
                             : ''}
 
                           {menuItem.children ?
-
                             <ul className="sidebar-submenu"
                               style={menuItem.active ? sidebartoogle ? { opacity: 1, transition: 'opacity 500ms ease-in' } : { display: "block" } : { display: "none" }}>
-
                               {menuItem.children.map((childrenItem, index) => {
-
                                 return (
                                   <li key={index}>
-
                                     {(childrenItem.type === 'sub') ?
                                       <a href="javascript" className={`${childrenItem.active ? 'active' : ''}`} onClick={(event) =>{event.preventDefault(); toggletNavActive(childrenItem)}}>{props.t(childrenItem.title)}
                                         <span className="sub-arrow">

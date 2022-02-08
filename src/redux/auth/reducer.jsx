@@ -16,7 +16,7 @@ export default function(state = initialState, action){
             return {
                 ...state, 
                 loading:false, 
-                dataUser: action.payload
+                authUser: !!action.payload ? action.payload : state.authUser
             }
 
         default: 

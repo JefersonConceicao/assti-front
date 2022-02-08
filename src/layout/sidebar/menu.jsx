@@ -3,34 +3,17 @@ export const MENUITEMS = [
     {
         Items:[
             {
-                title: 'Admin', 
-                icon: Home, 
-                type: 'sub', 
-                active: false, 
-                children: [
-                    { 
-                        path: `${process.env.PUBLIC_URL}/dashboard/default`, 
-                        title: 'Default', 
-                        type: 'link' 
-                    },
-
-                    { 
-                        path: `${process.env.PUBLIC_URL}/dashboard/ecommerce`, 
-                        title: 'Ecommerce', 
-                        type: 'link' 
-                    },
-                ]
-            }
-        ]
-    },
-    {
-        Items:[
-            {
-                title: 'Usuários',
+                title: 'Administrativo',
                 icon: User,
-                type: 'link',
+                type: 'sub',
                 active: false,
-                path: `${process.env.PUBLIC_URL}/dashboard/ecommerce`
+                children: [
+                    {
+                        path:`${process.env.PUBLIC_URL}/usuarios`,
+                        title: 'Usuários',
+                        type: 'link',
+                    }
+                ]
             }
         ]
     }
