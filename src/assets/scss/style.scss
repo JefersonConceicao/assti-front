@@ -109,3 +109,6 @@
 @import "themes/dark-sidebar";
 @import "themes/theme-customizer";
 @import "themes/responsive";
+.btn-primary:hover {
+    background-color: var(--theme-deafult) !important;
+}

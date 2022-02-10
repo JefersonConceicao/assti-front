@@ -77,7 +77,6 @@ const Sidebar = (props) => {
           document.querySelector(".bg-overlay1").classList.remove("active")
         } 
         if (Items.children && Items.children.includes(item)){
-          console.log("active");
             Items.active = true
             document.querySelector(".sidebar-link").classList.add("active")
           }

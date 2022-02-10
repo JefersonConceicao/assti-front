@@ -11,9 +11,14 @@ if(!!barearToken){
 }
 
 api.interceptors.response.use(function(response){
+    if(response.data.status === "Token is Expired"){
+        localStorage.removeItem("userToken");   
+        window.location.href = '/'
+    }
+
     return response;
-}, function({response}){
-    switch(response.status){
+}, function({ responseError }){
+    switch(responseError.status){
         case 401:
             toast.error("Crendenciais invalidas");
         break; 

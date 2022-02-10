@@ -21,7 +21,7 @@ const Login = ({
   });
 
   const redirectToHome = () => {
-    window.location.href = '/dashboard/default'
+    window.location.href = '/usuarios'
   }
 
   const submitFormLogin = (e) => {
